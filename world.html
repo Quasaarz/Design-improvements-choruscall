@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chorus call || World</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- bootstrap -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script>
+function imageZoom(imgID, resultID) {
+  var img, lens, result, cx, cy;
+  img = document.getElementById(imgID);
+  result = document.getElementById(resultID);
+  /*create lens:*/
+  lens = document.createElement("DIV");
+  lens.setAttribute("class", "img-zoom-lens");
+  /*insert lens:*/
+  img.parentElement.insertBefore(lens, img);
+  /*calculate the ratio between result DIV and lens:*/
+  cx = result.offsetWidth / lens.offsetWidth;
+  cy = result.offsetHeight / lens.offsetHeight;
+  /*set background properties for the result DIV:*/
+  result.style.backgroundImage = "url('" + img.src + "')";
+  result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+  /*execute a function when someone moves the cursor over the image, or the lens:*/
+  lens.addEventListener("mousemove", moveLens);
+  img.addEventListener("mousemove", moveLens);
+  /*and also for touch screens:*/
+  lens.addEventListener("touchmove", moveLens);
+  img.addEventListener("touchmove", moveLens);
+  function moveLens(e) {
+    var pos, x, y;
+    /*prevent any other actions that may occur when moving over the image:*/
+    e.preventDefault();
+    /*get the cursor's x and y positions:*/
+    pos = getCursorPos(e);
+    /*calculate the position of the lens:*/
+    x = pos.x - (lens.offsetWidth / 2);
+    y = pos.y - (lens.offsetHeight / 2);
+    /*prevent the lens from being positioned outside the image:*/
+    if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+    if (x < 0) {x = 0;}
+    if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+    if (y < 0) {y = 0;}
+    /*set the position of the lens:*/
+    lens.style.left = x + "px";
+    lens.style.top = y + "px";
+    /*display what the lens "sees":*/
+    result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+  }
+  function getCursorPos(e) {
+    var a, x = 0, y = 0;
+    e = e || window.event;
+    /*get the x and y positions of the image:*/
+    a = img.getBoundingClientRect();
+    /*calculate the cursor's x and y coordinates, relative to the image:*/
+    x = e.pageX - a.left;
+    y = e.pageY - a.top;
+    /*consider any page scrolling:*/
+    x = x - window.pageXOffset;
+    y = y - window.pageYOffset;
+    return {x : x, y : y};
+  }
+}
+</script>
+</head>
+<body>
+    <!-- Start of Flagbar -->
+    <div class="flagbar">
+        <!-- Indian Flag -->
+        <a href="#" target="_blank" class="flag">
+            <img src="./images/indian-flag-3096740__340.webp " alt="Indian flag. Tricolor with colors: Saffron, White and green from top to bottom where the colors take up exactly 1/3 of the flag. On the white exists the Ashoka Chakra which is two vibrant navy blue concentric circles with 24 bars connecting the two like a wheel. The centre circle is filled in with its border colour while the outer circle has a transparent background since the 24 bars exist inside it.">
+        </a>
+        <!-- Australian Flag -->
+        <a href="#" target="_blank" class="flag">
+            <img src="./australian-flag-icon.png" alt="The Australian flag. British Watermark, white 6-point star underneath with a white southern cross constellation(with the binary star).">
+        </a>
+        
+        
+        <!-- Brazilian Flag -->
+        <a href="#" target="_blank" class="flag">
+            <img src="./brazilian-flag-icon.png" alt="The Brazilian flag. Green background on which there is a yellow diamond in which exists blue circle with stars and a white bar with written 'Ordem E Progresso'">
+        </a>
+        <!-- Japanese Flag -->
+        <a href="#" target="_blank" class="flag">
+            <img src="./Images/istockphoto-479224880-170667a.jpg" alt="Japanese flag. White background with a red circle in the middle">
+        </a>
+        <!-- New Zealandese Flag -->
+        <a href="#" target="_blank" class="flag">
+            <img src="./Images/illustration-new-zealand-flag_53876-27119.webp" alt="The New Zealand Flag. British watermark with a red southern cross constellation">
+        </a>
+    </div>
+    <!-- End of flagbar -->
+    <!-- start of navbar -->
+    <div class="nav">
+        <div class="nav-image">
+                <img src="https://choruscall.com/wp-content/themes/chorus_call_corporate/images/CC_Logo.png" alt="">
+            </div>
+        <div class="nav-head">
+            
+            <p class="nav-title">
+                Chorus Call
+            </p>
+            <p class="nav-subtitle">
+                The Diamond of Teleconferencing
+            </p>
+        </div>
+        <div class="nav-links">
+            <a href="./index.html" class="link">Home</a>
+            <a href="./about.html" class="link">About Us</a>
+            <a href="./world.html" class="link">Locations</a>
+            <a href="#" class="link">Services</a>
+        </div>
+        <form class="search">
+                <img src="https://www.transparentpng.com/thumb/search-button/RwuGa6-button-search-png.png" alt="" class="search-icon">
+                
+            <input type="text" placeholder="Search" class="search-box">
+            <div class="border-bottom"></div>
+        </form>
+    </div>
+    <!-- end of navbar -->
+    <!-- World -->
+    <div class="head">
+        <img id="myimage" src="./wp8055148.png" alt="World map">
+        <div class="img-zoom-result" id="myresult"></div>
+    </div>
+    <!-- end of world -->
+    <div class="divider"></div>
+    
+    <!-- start of cards -->
+    <div class="a-container">
+        <div class="title">
+        Where We are Based In
+    </div>
+    <div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"  aria-controls="collapseOne">
+        India
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        We have 3 centers in india. One in Delhi, One in Mumbai and one in Bengaluru 
+        <br>
+        <br>
+        <a href="https://choruscallindia.com" class="c-button color">Know more</a>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        The USA
+
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        We are present in New Jersey City and Pittsburgh in the United States of America
+        <br>
+        <br>
+        <a href="https://choruscallindia.com" class="c-button color">Know more</a>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Australia
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        We are present in Sydney, Australia too
+        <br>
+        <br>
+        <a href="https://www.choruscallaustralia.com.au/" class="c-button color">Know more</a>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        New Zealand
+        
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        We are present in Aukland, NZ too
+        <br>
+        <br>
+        <a href="https://www.choruscall.co.nz/" class="c-button color">Know more</a>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        Brazil
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        We are present in Barueri, Brazil too
+        <br>
+        <br>
+        <a href="https://choruscall.com.br/" class="c-button color">Know more</a>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+        Japan
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        We are present in Tokyo, Japan too
+        <br>
+        <br>
+        <a href="https://choruscallasia.com" class="c-button color">Know more</a>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- footer -->
+    <footer class="world">
+        <p class="cr">&#169;1996</p>
+        <p class="name">Made by Anshveer Singh Bindra</p>
+    </footer>
+    <script>
+// Initiate zoom effect:
+imageZoom("myimage", "myresult");
+</script>
+<!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+
+</html>
